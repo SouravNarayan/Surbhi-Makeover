@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radiance Beauty Studio — Beauty Salon &amp; Home Service</title>
+<meta name="description" content="Bridal makeup, hair styling, skincare and grooming for every occasion — book a salon visit or a home visit in under a minute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital@0;1&family=Jost:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">Radiance Beauty Studio</a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#location">Location</a>
+    </nav>
+    <button class="btn btn-gold nav-cta" data-open-booking>Book Appointment</button>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#about">About</a>
+    <a href="#location">Location</a>
+    <button class="btn btn-gold" data-open-booking>Book Appointment</button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">Est. Salon &amp; Home Service · India</p>
+      <h1 class="hero-title">Radiance Beauty Studio</h1>
+      <p class="hero-flourish">Salon-crafted beauty, at the salon or at your doorstep</p>
+      <p class="hero-sub">Bridal makeup, hair styling, skincare and grooming for every occasion — book a salon visit or a home visit in under a minute.</p>
+      <div class="hero-actions">
+        <button class="btn btn-gold btn-lg" data-open-booking>Book an Appointment</button>
+        <a href="#services" class="btn btn-ghost btn-lg">View Services</a>
+      </div>
+      <div class="hero-hours">
+        <div class="hero-hours-row"><span>Monday – Saturday</span><span>10:00 AM – 8:00 PM</span></div>
+        <div class="hero-hours-row"><span>Sunday</span><span>11:00 AM – 6:00 PM</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="collage">
+        <div class="frame frame-1"><img src="static/images/gallery-1.jpg" alt="" loading="lazy"></div>
+        <div class="frame frame-2"><img src="static/images/gallery-2.jpg" alt="" loading="lazy"></div>
+        <div class="frame frame-3"><img src="static/images/gallery-3.jpg" alt="" loading="lazy"></div>
+        <svg class="motif motif-hero" viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="motif-path" d="M100 10 C 40 40, 30 110, 70 150 C 100 180, 150 170, 150 210 C 150 240, 110 250, 90 240" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="services">
+  <div class="container">
+    <p class="eyebrow center">What We Offer</p>
+    <h2 class="section-title center">Services</h2>
+    <div class="divider" data-animate-line></div>
+    <div class="services-grid">
+      <div class="service-category">
+        <h3 class="service-category-name">Hair</h3>
+        <ul class="service-list">
+          <li class="service-row">
+            <span class="service-name">Haircut &amp; Styling</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹399</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Hair Spa</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹899</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Keratin / Smoothening</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹2,999</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Global Colour / Highlights</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹1,999</span>
+          </li>
+        </ul>
+      </div>
+      <div class="service-category">
+        <h3 class="service-category-name">Skin</h3>
+        <ul class="service-list">
+          <li class="service-row">
+            <span class="service-name">Cleanup</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹499</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Facial (Gold / Fruit / De-Tan)</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹799</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Bleach</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹299</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Threading &amp; Waxing</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹99</span>
+          </li>
+        </ul>
+      </div>
+      <div class="service-category">
+        <h3 class="service-category-name">Hands &amp; Feet</h3>
+        <ul class="service-list">
+          <li class="service-row">
+            <span class="service-name">Manicure</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹399</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Pedicure</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹499</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Nail Art</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹299</span>
+          </li>
+        </ul>
+      </div>
+      <div class="service-category">
+        <h3 class="service-category-name">Bridal &amp; Occasion</h3>
+        <ul class="service-list">
+          <li class="service-row">
+            <span class="service-name">Bridal Makeup</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">On request</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Party Makeup</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹1,999</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Sangeet / Mehendi Look</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹1,499</span>
+          </li>
+          <li class="service-row">
+            <span class="service-name">Henna / Mehendi Design</span>
+            <span class="service-dots" aria-hidden="true"></span>
+            <span class="service-price">From ₹499</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="services-note">Prices are indicative and vary by hair/skin condition and product used. Final pricing is confirmed at consultation.</p>
+    <div class="center-cta">
+      <button class="btn btn-outline-gold" data-open-booking>Book a Service</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section section-alt" id="gallery">
+  <div class="container">
+    <p class="eyebrow center">Recent Work</p>
+    <h2 class="section-title center">From Our Instagram</h2>
+    <p class="section-lede center">Follow <a href="https://www.instagram.com/radiancebeauty.in/" target="_blank" rel="noopener">@radiancebeauty.in</a> for everyday looks, bridal transformations and behind-the-scenes.</p>
+    <div class="divider" data-animate-line></div>
+    <div class="instagram-embed">
+      &lt;!-- Paste your SnapWidget / Elfsight / LightWidget embed &lt;iframe&gt; or &lt;script&gt; tag here after signing up. See SETUP_GUIDE.md Step 5. --&gt;
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div class="about-copy">
+      <p class="eyebrow">Our Studio</p>
+      <h2 class="section-title">Beauty, unhurried</h2>
+      <p class="about-text">Radiance Beauty Studio was built around a simple idea — every client deserves the same unhurried, detail-first attention, whether it's a Tuesday cleanup or a wedding morning. Our team trains continuously on the latest techniques while staying rooted in the skincare and haircare rituals clients have trusted for generations.</p>
+      <p class="about-text">Can't make it to the studio? Our home-visit team carries the same products and equipment straight to your door — ideal for bridal parties, elderly clients and busy schedules.</p>
+    </div>
+    <div class="about-visual" aria-hidden="true">
+      <svg class="motif motif-about" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="motif-path" d="M110 20 C 60 40, 45 100, 85 130 C 115 152, 165 140, 165 175 C 165 200, 130 210, 110 200" stroke="currentColor" stroke-width="1.25"/>
+        <circle class="motif-dot" cx="110" cy="20" r="3" fill="currentColor"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION ============ -->
+<section class="section section-alt" id="location">
+  <div class="container">
+    <p class="eyebrow center">Visit Us</p>
+    <h2 class="section-title center">Find the Studio</h2>
+    <div class="divider" data-animate-line></div>
+    <div class="location-wrap">
+      <a class="map-frame" href="https://www.google.com/maps/search/?api=1&query=30.740200,76.784900" target="_blank" rel="noopener" aria-label="Open salon location in Google Maps">
+        <iframe src="https://www.google.com/maps?q=30.740200,76.784900&amp;z=16&amp;output=embed" width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Salon location map"></iframe>
+        <span class="map-overlay-tag">Open in Google Maps ↗</span>
+      </a>
+      <div class="location-card">
+        <h3>Radiance Beauty Studio</h3>
+        <p>12 Sunder Nagar Market<br>Sector 15, Chandigarh, 160015</p>
+        <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=30.740200,76.784900" target="_blank" rel="noopener">Get Directions ↗</a>
+        <a class="location-link" href="tel:+919876543210">Call +91 98765 43210</a>
+        <a class="location-link" href="https://wa.me/919876543210" target="_blank" rel="noopener">WhatsApp Us</a>
+        <div class="location-hours">
+          <div class="hero-hours-row"><span>Monday – Saturday</span><span>10:00 AM – 8:00 PM</span></div>
+          <div class="hero-hours-row"><span>Sunday</span><span>11:00 AM – 6:00 PM</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING PANEL (dark, contains trigger) ============ -->
+<section class="section booking-band" id="book">
+  <div class="container booking-band-inner">
+    <svg class="motif motif-band" viewBox="0 0 300 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path class="motif-path" d="M10 60 C 60 20, 120 20, 150 60 C 180 100, 240 100, 290 60" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    <p class="eyebrow eyebrow-inverse">Ready when you are</p>
+    <h2 class="section-title inverse">Book your appointment</h2>
+    <p class="section-lede inverse">Salon visit or home visit — takes less than a minute.</p>
+    <button class="btn btn-gold btn-lg" data-open-booking>Book Appointment</button>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="nav-brand footer-brand">Radiance Beauty Studio</p>
+      <p class="footer-address">12 Sunder Nagar Market, Sector 15, Chandigarh, 160015</p>
+    </div>
+    <div class="footer-links">
+      <a href="tel:+919876543210">+91 98765 43210</a>
+      <a href="mailto:hello@radiancebeauty.in">hello@radiancebeauty.in</a>
+      <a href="https://www.instagram.com/radiancebeauty.in/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <p class="footer-copy">© <span id="year"></span> Radiance Beauty Studio. All rights reserved.</p>
+</footer>
+
+<!-- ============ BOOKING MODAL ============ -->
+<div class="modal-backdrop" id="bookingBackdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+    <button class="modal-close" id="bookingClose" aria-label="Close booking form">&times;</button>
+
+    <div id="bookingFormWrap">
+      <h3 id="bookingTitle" class="modal-title">Book Your Appointment</h3>
+
+      <form id="bookingForm" novalidate>
+        <fieldset class="visit-toggle">
+          <legend>Visit type <span class="req">*</span></legend>
+          <label class="toggle-option">
+            <input type="radio" name="visitType" value="Salon Visit" required checked>
+            <span>Salon Visit</span>
+          </label>
+          <label class="toggle-option">
+            <input type="radio" name="visitType" value="Home Visit" required>
+            <span>Home Visit</span>
+          </label>
+        </fieldset>
+
+        <div class="field">
+          <label for="name">Name <span class="req">*</span></label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="mobile">Mobile Number <span class="req">*</span></label>
+          <input type="tel" id="mobile" name="mobile" required inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10-digit mobile number" autocomplete="tel">
+          <p class="field-hint">10-digit Indian mobile number, no country code.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="date">Date of booking <span class="req">*</span></label>
+            <input type="date" id="date" name="date" required>
+          </div>
+          <div class="field">
+            <label for="time">Time of booking</label>
+            <input type="time" id="time" name="time">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="purpose">Purpose of booking</label>
+          <select id="purpose" name="purpose">
+            <option value="Regular">Regular</option>
+            <option value="Wedding">Wedding</option>
+            <option value="Sangeet">Sangeet</option>
+            <option value="Party">Party</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <p class="form-error" id="formError" role="alert"></p>
+        <button type="submit" class="btn btn-gold btn-lg btn-block" id="submitBtn">Confirm Booking</button>
+      </form>
+    </div>
+
+    <div id="bookingSuccessWrap" class="booking-success" hidden>
+      <svg class="success-check" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="1.5"/><path d="M18 31 L26 39 L42 21" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3 class="modal-title">Appointment booked</h3>
+      <p id="successMessage" class="success-message"></p>
+      <a id="successMapLink" class="location-link" href="#" target="_blank" rel="noopener">View salon location on Google Maps ↗</a>
+      <a id="successWaLink" class="btn btn-outline-gold btn-block" href="#" target="_blank" rel="noopener">Confirm on WhatsApp</a>
+      <button class="btn btn-ghost btn-block" id="closeSuccessBtn">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.__SALON_CONFIG__ = {
+    salonName: "Radiance Beauty Studio",
+    gasWebAppUrl: "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",
+    whatsappOwnerNumber: "919876543210",
+    mapLat: "30.740200",
+    mapLng: "76.784900"
+  };
+</script>
+<script src="static/js/main.js"></script>
+</body>
+</html>
