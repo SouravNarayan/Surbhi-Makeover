@@ -1,5 +1,5 @@
 {
-  "salon_name": "Radiance Beauty Studio",
+  "salon_name": "Surbhi Makeover",
   "tagline": "Salon-crafted beauty, at the salon or at your doorstep",
   "hero_subtext": "Bridal makeup, hair styling, skincare and grooming for every occasion — book a salon visit or a home visit in under a minute.",
   "phone_display": "+91 98765 43210",
@@ -13,7 +13,7 @@
   "map_latitude": "30.740200",
   "map_longitude": "76.784900",
   "map_embed_src": "https://www.google.com/maps?q=30.740200,76.784900&z=16&output=embed",
-  "gas_web_app_url": "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",
+  "gas_web_app_url": "https://script.google.com/macros/s/AKfycbyRqp38AzrZ3mJY-fG08XKYApnir7qhv4RY32uRjTX4blRos0YfdSr80YeV71wnqQ2f/exec",
   "business_hours": [
     { "day": "Monday – Saturday", "time": "10:00 AM – 8:00 PM" },
     { "day": "Sunday", "time": "11:00 AM – 6:00 PM" }
