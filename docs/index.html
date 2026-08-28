@@ -186,34 +186,23 @@
   <div class="container">
     <p class="eyebrow center">Recent Work</p>
     <h2 class="section-title center">Our Work</h2>
-    <p class="section-lede center">Follow <a class="insta-link" href="https://www.instagram.com/surbhiglamstudio?utm_source=qr" target="_blank" rel="noopener">@surbhiglamstudio</a> for everyday looks, bridal transformations and behind-the-scenes.</p>
+    <p class="section-lede center">Follow <a class="insta-link" href="https://www.instagram.com/radiancebeauty.in/" target="_blank" rel="noopener">@radiancebeauty.in</a> for everyday looks, bridal transformations and behind-the-scenes.</p>
     <div class="divider" data-animate-line></div>
 
-    <div class="work-grid">
-      <div class="work-item">
-        <img src="static/images/gallery-4.jpg" alt="" loading="lazy">
-      </div>
-      <div class="work-item work-video" data-video>
-        <video src="static/images/before-after-1.mp4" muted loop playsinline preload="metadata"></video>
-        <button class="play-btn" aria-label="Play video">
-          <svg viewBox="0 0 60 60" width="52" height="52"><circle cx="30" cy="30" r="29" fill="rgba(22,40,31,0.55)" stroke="#F5EFE4" stroke-width="1.5"/><path d="M24 18 L42 30 L24 42 Z" fill="#F5EFE4"/></svg>
-        </button>
-      </div>
-      <div class="work-item">
-        <img src="static/images/gallery-5.jpg" alt="" loading="lazy">
-      </div>
-      <div class="work-item">
-        <img src="static/images/gallery-6.jpg" alt="" loading="lazy">
-      </div>
-      <div class="work-item work-video" data-video>
-        <video src="static/images/before-after-2.mp4" muted loop playsinline preload="metadata"></video>
-        <button class="play-btn" aria-label="Play video">
-          <svg viewBox="0 0 60 60" width="52" height="52"><circle cx="30" cy="30" r="29" fill="rgba(22,40,31,0.55)" stroke="#F5EFE4" stroke-width="1.5"/><path d="M24 18 L42 30 L24 42 Z" fill="#F5EFE4"/></svg>
-        </button>
-      </div>
-      <div class="work-item">
-        <img src="static/images/gallery-7.jpg" alt="" loading="lazy">
-      </div>
+    <div class="work-grid" id="workGridMain">
+      <p class="gallery-loading">Loading gallery…</p>
+    </div>
+
+    <div class="center-cta">
+      <button class="btn btn-outline-gold" id="viewFullGalleryBtn" hidden>View Full Gallery</button>
+    </div>
+  </div>
+
+  <div class="gallery-modal-backdrop" id="galleryModalBackdrop">
+    <div class="gallery-modal">
+      <button class="modal-close" id="galleryModalClose" aria-label="Close gallery">&times;</button>
+      <h3 class="modal-title">Full Gallery</h3>
+      <div class="work-grid work-grid-full" id="workGridFull"></div>
     </div>
   </div>
 
@@ -227,28 +216,125 @@
     .play-btn{ position:absolute; top:50%; left:50%; transform: translate(-50%,-50%); background:none; border:none; padding:0; cursor:pointer; transition: transform .2s; }
     .work-video:hover .play-btn{ transform: translate(-50%,-50%) scale(1.08); }
     .work-video.playing .play-btn{ opacity:0; pointer-events:none; }
-    @media (max-width: 720px){ .work-grid{ grid-template-columns: repeat(2, 1fr); } }
+    .gallery-loading{ text-align:center; color: var(--color-text-soft); font-family: var(--font-utility); font-size:.85rem; grid-column: 1 / -1; }
+    .gallery-modal-backdrop{
+      position: fixed; inset:0; background: rgba(22,40,31,.65);
+      display:flex; align-items:flex-start; justify-content:center;
+      padding: 40px 20px; overflow-y:auto;
+      opacity:0; visibility:hidden; transition: opacity .25s;
+      z-index: 100;
+    }
+    .gallery-modal-backdrop.open{ opacity:1; visibility:visible; }
+    .gallery-modal{
+      background: var(--color-bg); max-width: 1000px; width:100%;
+      padding: 44px 36px 36px; position:relative; margin-top: 20px;
+      border: 1px solid var(--color-line);
+    }
+    .work-grid-full{ grid-template-columns: repeat(4, 1fr); max-height: 70vh; overflow-y:auto; }
+    @media (max-width: 720px){
+      .work-grid{ grid-template-columns: repeat(2, 1fr); }
+      .work-grid-full{ grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
+
   <script>
-    document.querySelectorAll('[data-video]').forEach(function(item){
-      var video = item.querySelector('video');
-      var btn = item.querySelector('.play-btn');
-      btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        if (video.paused){
-          video.muted = false;
-          video.controls = true;
-          video.play();
-          item.classList.add('playing');
+  (function(){
+    // ---- EDIT THESE TWO VALUES to match your GitHub repository ----
+    var OWNER_USERNAME = "SouravNarayan";
+    var REPO_NAME = "Surbhi-Makeover";
+    // -----------------------------------------------------------------
+
+    var API_URL = "https://api.github.com/repos/" + OWNER_USERNAME + "/" + REPO_NAME + "/contents/docs/static/images/gallery";
+    var MAIN_GRID_COUNT = 9;
+
+    var mainGrid = document.getElementById('workGridMain');
+    var fullGrid = document.getElementById('workGridFull');
+    var viewFullBtn = document.getElementById('viewFullGalleryBtn');
+    var modalBackdrop = document.getElementById('galleryModalBackdrop');
+    var modalClose = document.getElementById('galleryModalClose');
+
+    function buildTile(file){
+      var ext = file.name.split('.').pop().toLowerCase();
+      var isVideo = ['mp4','mov','webm'].indexOf(ext) !== -1;
+      var div = document.createElement('div');
+      div.className = 'work-item' + (isVideo ? ' work-video' : '');
+
+      if (isVideo){
+        var video = document.createElement('video');
+        video.src = file.download_url;
+        video.muted = true; video.loop = true; video.playsInline = true; video.preload = 'metadata';
+        div.appendChild(video);
+
+        var btn = document.createElement('button');
+        btn.className = 'play-btn';
+        btn.setAttribute('aria-label','Play video');
+        btn.innerHTML = '<svg viewBox="0 0 60 60" width="52" height="52"><circle cx="30" cy="30" r="29" fill="rgba(22,40,31,0.55)" stroke="#F5EFE4" stroke-width="1.5"/><path d="M24 18 L42 30 L24 42 Z" fill="#F5EFE4"/></svg>';
+        div.appendChild(btn);
+
+        btn.addEventListener('click', function(e){
+          e.stopPropagation();
+          if (video.paused){
+            video.muted = false; video.controls = true; video.play();
+            div.classList.add('playing');
+          }
+        });
+        video.addEventListener('pause', function(){ div.classList.remove('playing'); });
+        video.addEventListener('ended', function(){
+          div.classList.remove('playing'); video.controls = false; video.currentTime = 0;
+        });
+      } else {
+        var img = document.createElement('img');
+        img.src = file.download_url;
+        img.loading = 'lazy';
+        img.alt = '';
+        div.appendChild(img);
+      }
+      return div;
+    }
+
+    fetch(API_URL)
+      .then(function(res){
+        if (!res.ok) throw new Error('Could not load gallery folder');
+        return res.json();
+      })
+      .then(function(files){
+        var media = files
+          .filter(function(f){
+            var ext = f.name.split('.').pop().toLowerCase();
+            return ['jpg','jpeg','png','webp','mp4','mov','webm'].indexOf(ext) !== -1;
+          })
+          .sort(function(a,b){ return a.name.localeCompare(b.name); });
+
+        mainGrid.innerHTML = '';
+        if (media.length === 0){
+          mainGrid.innerHTML = '<p class="gallery-loading">Photos coming soon.</p>';
+          return;
         }
+
+        media.slice(0, MAIN_GRID_COUNT).forEach(function(f){ mainGrid.appendChild(buildTile(f)); });
+        media.forEach(function(f){ fullGrid.appendChild(buildTile(f)); });
+
+        if (media.length > MAIN_GRID_COUNT){
+          viewFullBtn.hidden = false;
+        }
+      })
+      .catch(function(err){
+        console.error(err);
+        mainGrid.innerHTML = '<p class="gallery-loading">Gallery is temporarily unavailable.</p>';
       });
-      video.addEventListener('pause', function(){ item.classList.remove('playing'); });
-      video.addEventListener('ended', function(){
-        item.classList.remove('playing');
-        video.controls = false;
-        video.currentTime = 0;
-      });
+
+    viewFullBtn.addEventListener('click', function(){
+      modalBackdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
     });
+    function closeGalleryModal(){
+      modalBackdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    modalClose.addEventListener('click', closeGalleryModal);
+    modalBackdrop.addEventListener('click', function(e){ if (e.target === modalBackdrop) closeGalleryModal(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeGalleryModal(); });
+  })();
   </script>
 </section>
 
